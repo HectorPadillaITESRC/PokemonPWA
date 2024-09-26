@@ -1,0 +1,223 @@
+﻿html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 50px 1fr;
+}
+
+header {
+    border-bottom: 1px outset lightgray;
+}
+
+    header h1 {
+        margin: 0;
+        padding: 0;
+        padding-left: 70px;
+        font-weight: normal;
+        background-image: url(imgs/icono.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+
+
+.listview {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.listitem {
+    display: grid;
+    cursor: pointer;
+    grid-template-rows: auto auto;
+    grid-template-columns: 100px 1fr;
+    background: gainsboro;
+    border: 1px solid lightgray;
+}
+
+    .listitem .icono {
+        grid-row: span 2;
+        margin: 0;
+        background: white;
+        height: 100%;
+        border-radius: 0 100% 100% 0px;
+    }
+
+    .listitem .numero {
+        align-self: center;
+        font-size: 1.5em;
+        font-style: italic;
+        color: white;
+        padding-left: 50px;
+    }
+
+    .listitem .nombre {
+        align-self: start;
+        font-size: 2.2em;
+        font-weight: normal;
+        color: black;
+        padding-left: 50px;
+    }
+
+main {
+    overflow: auto;
+    background: whitesmoke;
+}
+
+.pokemon {
+    margin:0;
+    padding:0;
+    background: whitesmoke;
+    gap: 5px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto 1fr auto 5px;
+}
+
+    .pokemon h2 {
+        margin: 0;
+        padding: 0 10px;
+    }
+
+        .pokemon h2 span {
+            padding: 0 20px;
+            border-radius: 16px;
+        }
+
+    .pokemon img {
+        background-image: url(imgs/pokemon.png);
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center;
+        max-height: 90%;
+        height: auto;
+        grid-column: span 2;
+    }
+
+    .pokemon .info {
+        width: 96%;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        padding: 5px;
+        background: white;
+        border-radius: 20px 20px 0 0;
+        grid-column: span 2;
+        gap: 5px;
+    }
+
+    .pokemon p {
+        margin: 0;
+        padding: 0;
+    }
+
+    .pokemon .info p:first-of-type {
+        grid-column: span 2;
+        font-size: 1.2em;
+    }
+
+    .pokemon .info b {
+        display: block;
+    }
+
+.insecto {
+    background-color: #A8B820;
+    color: white;
+}
+/* Verde amarillento para insectos */
+.dragon {
+    background-color: #7038F8;
+    color: white;
+}
+/* Violeta para dragones */
+.hada {
+    background-color: #EE99AC;
+    color: white;
+}
+/* Rosa claro para hadas */
+.fuego {
+    background-color: #F08030;
+    color: white;
+}
+/* Naranja para fuego */
+.fantasma {
+    background-color: #705898;
+    color: white;
+}
+/* Violeta oscuro para fantasmas */
+.tierra {
+    background-color: #E0C068;
+    color: black;
+}
+/* Marrón claro para tierra */
+.normal {
+    background-color: #A8A878;
+    color: black;
+}
+/* Gris claro para normal */
+.psiquico {
+    background-color: #F85888;
+    color: white;
+}
+/* Rosa brillante para psíquico */
+.acero {
+    background-color: #B8B8D0;
+    color: black;
+}
+/* Gris metálico para acero */
+.oscuro {
+    background-color: #705848;
+    color: white;
+}
+/* Marrón oscuro para oscuro */
+.electrico {
+    background-color: #F8D030;
+    color: black;
+}
+/* Amarillo brillante para eléctrico */
+.peleador {
+    background-color: #C03028;
+    color: white;
+}
+/* Rojo oscuro para peleador */
+.volador {
+    background-color: #A890F0;
+    color: white;
+}
+/* Azul claro para volador */
+.hierba {
+    background-color: #78C850;
+    color: white;
+}
+/* Verde para hierba */
+.hielo {
+    background-color: #98D8D8;
+    color: black;
+}
+/* Azul hielo para hielo */
+.veneno {
+    background-color: #A040A0;
+    color: white;
+}
+/* Púrpura oscuro para veneno */
+.roca {
+    background-color: #B8A038;
+    color: black;
+}
+/* Marrón para roca */
+.agua {
+    background-color: #6890F0;
+    color: white;
+}
+/* Azul para agua */

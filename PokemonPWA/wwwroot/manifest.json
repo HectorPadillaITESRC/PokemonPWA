@@ -1,0 +1,22 @@
+﻿{
+  "name": "Pokémon PWA",
+  "short_name": "Pokémon",
+  "description": "Una aplicación web progresiva para explorar Pokémon.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffcc00",
+  "icons": [
+    {
+      "src": "imgs/icono-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "imgs/icono-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "scope": "/"
+}

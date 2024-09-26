@@ -1,0 +1,53 @@
+﻿@page
+
+<html>
+<head>
+    <title>Pokémon PWA</title>
+    <link href="~/imgs/icono.png" rel="icon" />
+    <link rel="manifest" href="/manifest.json">
+    <link href="~/estilos.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1>Pokémon PWA</h1>
+    </header>
+    <main>
+        <section class="listview">
+        </section>
+        <template>
+            <div class="listitem">
+                <img class="icono" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png" />
+                <span class="numero">#010</span>
+                <span class="nombre">Caterpie</span>
+            </div>
+        </template>
+    </main>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/serviceworker.js?v=7');
+        }
+
+        let plantilla=document.querySelector("template");
+        let listview = document.querySelector(".listview");
+
+        async function descargarPokemon() {
+            let resp = await fetch("https://itesrc.net/api/pokemon");
+            if (resp.ok) {
+                let datos = await resp.json();
+
+                for (let x = 0; x < 150; x++){
+                    let clone = plantilla.content.firstElementChild.cloneNode(true);
+                    clone.children[0].src = datos[x].icono;
+                    clone.children[1].textContent = datos[x].numero;
+                    clone.children[2].textContent = datos[x].nombre;
+                    listview.append(clone);
+
+                }
+            }
+        }
+
+        descargarPokemon();
+
+    </script>
+</body>
+</html>
