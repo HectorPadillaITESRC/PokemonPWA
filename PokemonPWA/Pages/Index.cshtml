@@ -40,11 +40,21 @@
                     clone.children[0].src = datos[x].icono;
                     clone.children[1].textContent = datos[x].numero;
                     clone.children[2].textContent = datos[x].nombre;
+                    clone.dataset.numero = datos[x].numero;
                     listview.append(clone);
 
                 }
             }
         }
+
+        listview.addEventListener("click", function (e) {
+            const clickedElement = e.target.closest(".listitem");
+
+            if (clickedElement) {
+                sessionStorage.numPokemon = clickedElement.dataset.numero; // Accede al dataset del elemento clicado
+                window.location.href = '/datos';
+            }
+        });
 
         descargarPokemon();
 

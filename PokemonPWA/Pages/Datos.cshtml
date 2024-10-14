@@ -1,7 +1,9 @@
 ﻿@page
-
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokémon PWA</title>
     <link href="~/estilos.css" rel="stylesheet" />
 </head>
@@ -11,23 +13,64 @@
     </header>
     <main>
         <section class="pokemon">
-            <h2>Charizard</h2>
-            <h2>#006</h2>
-            <h2>
-                <span class="fuego">Fuego</span>
-                <span class="volador">Volador</span>
+            <h2 id="nombre">Cargando...</h2>
+            <h2 id="numero">#000</h2>
+            <h2 id="tipos">
+                <span id="tipo1" class="type"></span>
+                <span id="tipo2" class="type"></span>
             </h2>
-       <h2>Pokémon flama</h2>
-            <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/006.png" />
+            <h2 id="info">Cargando...</h2>
+            <img id="imagen" src="" alt="Imagen del Pokémon" />
 
             <div class="info">
-                <p>Charizard se dedica a volar por los cielos en busca de oponentes fuertes. Echa fuego por la boca y es capaz de derretir cualquier cosa. No obstante, si su rival es más débil que él, no usará este ataque.</p>
-                <p><b>Altura</b> 1.7m</p>
-                <p><b>Peso</b> 90.5kg</p>
+                <p id="descripcion">Cargando...</p>
+                <p><b>Altura:</b> <span id="altura">0m</span></p>
+                <p><b>Peso:</b> <span id="peso">0kg</span></p>
             </div>
-
         </section>
-
     </main>
+    <script>
+        async function cargarPokemon() {
+            const numPokemon = sessionStorage.getItem('numPokemon');
+
+            if (!numPokemon || isNaN(numPokemon) || numPokemon < 1) {
+                window.location.href = '/index'; 
+                return;
+            }
+
+            try {
+                const response = await fetch(`https://itesrc.net/api/pokemon/${numPokemon}`);
+
+                if (!response.ok) {
+                    throw new Error('Error al obtener los datos del Pokémon');
+                }
+
+                const data = await response.json();
+
+                document.getElementById('nombre').textContent = data.nombre.charAt(0).toUpperCase() + data.nombre.slice(1);
+                document.getElementById('numero').textContent = `#${data.numero.toString().padStart(3, '0')}`;
+                document.getElementById('descripcion').textContent = data.descripcion;
+                document.getElementById('imagen').src = data.imagen;
+                document.getElementById('altura').textContent = `${(data.altura / 10).toFixed(1)}m`; 
+                document.getElementById('peso').textContent = `${(data.peso / 10).toFixed(1)}kg`; 
+                document.getElementById('info').textContent = data.categoria;
+                let tipo1 = document.getElementById('tipo1');
+                tipo1.textContent = data.tipo1;
+                tipo1.className = tipo1.textContent.toLowerCase()
+                
+                if (data.tipo2) {
+                    let tipo2 = document.getElementById('tipo2');
+                    tipo2.textContent = data.tipo2;
+                    tipo2.className = tipo2.textContent.toLowerCase()
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('info').textContent = 'Error al cargar la información del Pokémon.';
+            }
+        }
+
+        cargarPokemon();
+    </script>
 </body>
 </html>
